@@ -132,5 +132,60 @@ class solution_0004(object):
             right = nums[l/2]
             return (left + right) / 2.0
 
+'''
+Issue: #1309
+Given a string s formed by digits ('0' - '9') and '#' . We want to map s to English lowercase characters as follows:
+
+Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+Characters ('j' to 'z') are represented by ('10#' to '26#') respectively. 
+Return the string formed after mapping.
+
+It's guaranteed that a unique mapping will always exist.abs
+ 
+
+Example 1:
+
+    Input: s = "10#11#12"
+    Output: "b"
+    Explanation: "j" -> "10#" , "k" -> "11#" , "a" -> "1" , "b" -> "2".
+    Example 2:
+
+Input: s = "1326#"
+Output: "acz"
+Example 3:
+
+Input: s = "25#"
+Output: "y"
+
+source: leetcode
+link: https://leetcode-cn.com/problems/decrypt-string-from-alphabet-to-integer-mapping
+'''
+class solution_1309(object):
+    def freq_alphabets(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        FLAG = 0
+        TAG = 96
+        r_s = str()
+        l = len(s)
+        for i, s_i in enumerate(s):
+            if FLAG == 0:
+                if i < l - 2:
+                    if s[i+2] == '#':
+                        num = eval(s[i:i+2])
+                        FLAG = 2
+                    else:
+                        num = eval(s_i)
+                else:
+                    num = eval(s_i)
+                char = chr(num + TAG)
+                r_s += char
+            else:
+                FLAG -= 1
+        return r_s
+
+
 if __name__ == "__main__":
     pass
