@@ -186,6 +186,44 @@ class solution_1309(object):
                 FLAG -= 1
         return r_s
 
+'''
+Issue: #0392
+
+Given a string s and a string t, check if s is subsequence of t.
+
+You may assume that there is only lower case English letters in both s and t. t is potentially a very long (length ~= 500,000) string, and s is a short string (<=100).
+
+A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ace" is a subsequence of "abcde" while "aec" is not).
+
+Example 1:
+s = "abc", t = "ahbgdc"
+
+Return true.
+
+Example 2:
+s = "axc", t = "ahbgdc"
+
+Return false.
+
+source: leetcode
+link: https://leetcode-cn.com/problems/is-subsequence
+'''
+class solution_0392(object):
+    def is_subsequence(self, s, t):
+        '''
+        :type s: str
+        :type t: str
+        :rtype: bool
+        '''
+        for s_i in s:
+            if s_i in t:
+                i = t.index(s_i)
+                t = t[i + 1:]
+            else:
+                return False
+        return True
+
+
 
 if __name__ == "__main__":
     pass
