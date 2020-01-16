@@ -223,7 +223,43 @@ class solution_0392(object):
                 return False
         return True
 
+'''
+Issue: #0009
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
 
+Example 1:
+
+Input: 121
+Output: true
+Example 2:
+
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+Example 3:
+
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+
+source: leetcode
+link: https://dev.lingkou.xyz/problems/palindrome-number
+'''
+class solution_0009(object):
+    def is_palindrome(self, x):
+        '''
+        :type x: int
+        :rtype: bool
+        '''
+	if x < 0:
+            return False
+        else:
+            s = str(x)
+            n = len(s) / 2
+            for i in range(n):
+                if s[i] != s[-(i + 1)]:
+                    return False
+            return True
 
 if __name__ == "__main__":
     pass
