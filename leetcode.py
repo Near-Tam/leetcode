@@ -303,5 +303,48 @@ class solution_0575(object):
         else:
             return n
 
+'''
+Issue: #0023
+
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+
+Example:
+
+    Input:
+        [
+          1->4->5,
+          1->3->4,
+          2->6
+        ]
+        Output: 1->1->2->3->4->4->5->6
+
+source: leetcode
+link: https://leetcode-cn.com/problems/merge-k-sorted-lists
+'''
+class solution_0023(object):
+    def merge_k_list(self, lists):
+        '''
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        '''
+        l = list()
+        for list_i in lists:
+            while True:
+                if list_i is not None:
+                    l.append(list_i.val)
+                    list_i = list_i.next
+                else:
+                    break
+        if len(l) == 0:
+            return None
+        sort_l = sorted(l)
+        head = ListNode(sort_l[0])
+        curr = head
+        for value in sort_l[1:]:
+            curr.next = ListNode(value)
+            curr = curr.next
+        return head
+
+
 if __name__ == "__main__":
     pass
